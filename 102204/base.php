@@ -19,7 +19,7 @@ class DB{
             foreach($arg[0]as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }
         if(!empty($arg[1])){
             $sql=$sql.$arg[1];
@@ -33,11 +33,12 @@ class DB{
             foreach($arg[0]as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }
         if(!empty($arg[1])){
             $sql=$sql.$arg[1];
         }
+        // echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
     }
 
@@ -51,7 +52,7 @@ class DB{
             foreach($arg as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }else{
             $sql=$sql." where `id`='{$arg}'";
         }
@@ -65,7 +66,7 @@ class DB{
             foreach($arg as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }else{
             $sql=$sql." where `id`='{$arg}'";
         }
@@ -106,9 +107,13 @@ $Menu=new DB('menu');
 $Good=new DB('good');
 $Vote=new DB('vote');
 $Blog=new DB('blog');
-$Cls=new DB('cls');
-$Pro=new DB('pro');
+$Cls=new DB('class');
+$Goods=new DB('goods');
 $Ord=new DB('ord');
 $Visit=new DB('visit');
+$Mem=new DB('mem');
+$Cls=new DB('class');
+
+// if(empty($_SESSION['total'])){}
 
 

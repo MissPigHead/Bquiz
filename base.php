@@ -19,7 +19,7 @@ class DB{
             foreach($arg[0]as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }
         if(!empty($arg[1])){
             $sql=$sql.$arg[1];
@@ -33,7 +33,7 @@ class DB{
             foreach($arg[0]as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }
         if(!empty($arg[1])){
             $sql=$sql.$arg[1];
@@ -51,7 +51,7 @@ class DB{
             foreach($arg as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }else{
             $sql=$sql." where `id`='{$arg}'";
         }
@@ -65,7 +65,7 @@ class DB{
             foreach($arg as $k=>$v){
                 $tmp[]=sprintf("`%s`='%s'",$k,$v);
             }
-            $sq=$sql." where ".implode(" && ",$tmp);
+            $sql=$sql." where ".implode(" && ",$tmp);
         }else{
             $sql=$sql." where `id`='{$arg}'";
         }

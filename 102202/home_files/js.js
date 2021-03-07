@@ -19,3 +19,6 @@ function good(id,type,user)
 		}
 	})
 }
+function to(url){
+	location.href=url
+}

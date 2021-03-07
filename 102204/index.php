@@ -1,5 +1,6 @@
 <?php
-include_once("base.php")
+include_once("base.php");
+print_r($_SESSION);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,6 +9,7 @@ include_once("base.php")
 
 <title>┌精品電子商務網站」</title>
 <link href="./home_files/css.css" rel="stylesheet" type="text/css">
+<script src="jquery-3.4.1.js"></script>
 <script src="./home_files/js.js"></script>
 </head>
 
@@ -19,11 +21,23 @@ include_once("base.php")
             	<img src="./home_files/0416.jpg">
             </a>
                         <div style="padding:10px;">
-                <a href="?">回首頁</a> |
+                <a href="index.php">回首頁</a> |
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
                 <a href="?do=buycart">購物車</a> |
-                                <a href="?do=login">會員登入</a> |
+                <?php
+                if(empty($_SESSION['user'])){
+                        ?>
+        <a href="?do=login">會員登入</a> |
+                        <?php
+        
+}else{
+        
+        ?>
+        <a href="api/mlogout.php">登出</a> |
+                <?php
+                }
+                ?>
                                 <a href="?do=adlogin">管理登入</a>
            </div>
            <marquee behavior="" direction="">
@@ -32,6 +46,38 @@ include_once("base.php")
                 </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">
+<!-- menu -->
+<?php
+        $tn=$Goods->count(['sh'=>1]);
+?>
+<a href="?do=main">全部商品(<?=$tn?>)</a>
+<?php
+$fs=$Cls->all(['fa'=>0]);
+foreach($fs as $f){
+        $fn=$Goods->count(['sh'=>1,'fa'=>$f['id']])[0];
+?>
+<a href="?do=main&id=<?=$f['id']?>" onmouseover="show(<?=$f['id']?>)"><?=$f['tt']?>(<?=$fn?>)</a>
+<?php
+$ss=$Cls->all(['fa'=>$f['id']]);
+foreach($ss as $s){
+        $sn=$Goods->count(['sh'=>1,'son'=>$s['id']])[0];
+?>
+<a href="?do=main&id=<?=$s['id']?>&f=<?=$f['id']?>" class="son fa<?=$f['id']?>" style="background:#Fee"><?=$s['tt']?>(<?=$sn?>)</a>
+<?php
+}
+}
+?>
+<script>
+$(".son").hide()
+function show(id){
+        $(".son").hide()
+        $(`.fa${id}`).show()
+}
+</script>
+
+
+
+
         	            </div>
                         <span>
             	<div>進站總人數</div>

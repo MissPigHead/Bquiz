@@ -1,5 +1,6 @@
 <?php
-include_once("base.php")
+include_once("base.php");
+print_r($_SESSION);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,6 +9,7 @@ include_once("base.php")
 
 <title>┌精品電子商務網站」</title>
 <link href="./Manage Page_files/css.css" rel="stylesheet" type="text/css">
+<script src="jquery-3.4.1.js"></script>
 <script src="./Manage Page_files/js.js"></script>
 </head>
 
@@ -22,20 +24,20 @@ include_once("base.php")
                    </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">
-        	            	<a href="?do=admin&redo=admin">管理權限設置</a>
-            	            	<a href="?do=admin&redo=th">商品分類與管理</a>
-            	            	<a href="?do=admin&redo=order">訂單管理</a>
-            	            	<a href="?do=admin&redo=mem">會員管理</a>
-            	            	<a href="?do=admin&redo=bot">頁尾版權管理</a>
-            	            	<a href="?do=admin&redo=news">最新消息管理</a>
-            	        	<a href="?do=admin&redo=logout" style="color:#f00;">登出</a>
+        	            	<a href="?do=aadmin">管理權限設置</a>
+            	            	<a href="?do=ath">商品分類與管理</a>
+            	            	<a href="?do=aorder">訂單管理</a>
+            	            	<a href="?do=amem">會員管理</a>
+            	            	<a href="?do=abot">頁尾版權管理</a>
+            	            	<a href="?do=anews">最新消息管理</a>
+            	        	<a href="api/logout.php" style="color:#f00;">登出</a>
                     </div>
                     </div>
         <div id="right">
 
 		<?php
 		if(empty($_GET['do'])){
-			include_once("main.php");
+			include_once("aadmin.php");
 		}else{
 			include_once($_GET['do'].".php");
 		}
